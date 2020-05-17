@@ -54,7 +54,7 @@ class RandomProxy(object):
                     else:
                         user_pass = ''
 
-                    self.proxies[parts.group(1) + parts.group(3) + i] = user_pass
+                    self.proxies[parts.group(1) + parts.group(3) + str(i)] = user_pass
             finally:
                 fin.close()
             if self.mode == Mode.RANDOMIZE_PROXY_ONCE:
