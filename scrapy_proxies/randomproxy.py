@@ -42,7 +42,7 @@ class RandomProxy(object):
             self.proxies = {}
             fin = open(self.proxy_list)
             try:
-                for line in fin.readlines():
+                for i, line in fin.readlines():
                     parts = re.match('(\w+://)([^:]+?:[^@]+?@)?(.+)', line.strip())
                     if not parts:
                         continue
@@ -53,7 +53,7 @@ class RandomProxy(object):
                     else:
                         user_pass = ''
 
-                    self.proxies[parts.group(1) + parts.group(3)] = user_pass
+                    self.proxies[parts.group(1) + parts.group(3) + i] = user_pass
             finally:
                 fin.close()
             if self.mode == Mode.RANDOMIZE_PROXY_ONCE:
